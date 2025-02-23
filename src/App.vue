@@ -35,7 +35,7 @@ async function greet() {
       <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
         <Search class="size-6 text-muted-foreground" />
       </span>
-      <Button type="submit" variant="destructive">Greet</Button>
+      <Button type="submit">Greet</Button>
     </form>
     <p>{{ greetMsg }}</p>
   </main>
