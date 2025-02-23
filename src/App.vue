@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/core";
+import { Button } from '@/components/ui/button'
+import { Input } from '@/components/ui/input'
 
 const greetMsg = ref("");
 const name = ref("");
@@ -28,9 +30,12 @@ async function greet() {
     </div>
     <p>Click on the Tauri, Vite, and Vue logos to learn more.</p>
 
-    <form class="row" @submit.prevent="greet">
-      <input id="greet-input" v-model="name" placeholder="Enter a name..." />
-      <button type="submit">Greet</button>
+    <form @submit.prevent="greet">
+      <Input v-model="name" placeholder="Enter a name..." />
+      <span class="absolute start-0 inset-y-0 flex items-center justify-center px-2">
+        <Search class="size-6 text-muted-foreground" />
+      </span>
+      <Button type="submit" variant="destructive">Greet</Button>
     </form>
     <p>{{ greetMsg }}</p>
   </main>
@@ -102,37 +107,6 @@ h1 {
   text-align: center;
 }
 
-input,
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  color: #0f0f0f;
-  background-color: #ffffff;
-  transition: border-color 0.25s;
-  box-shadow: 0 2px 2px rgba(0, 0, 0, 0.2);
-}
-
-button {
-  cursor: pointer;
-}
-
-button:hover {
-  border-color: #396cd8;
-}
-button:active {
-  border-color: #396cd8;
-  background-color: #e8e8e8;
-}
-
-input,
-button {
-  outline: none;
-}
-
 #greet-input {
   margin-right: 5px;
 }
@@ -145,15 +119,6 @@ button {
 
   a:hover {
     color: #24c8db;
-  }
-
-  input,
-  button {
-    color: #ffffff;
-    background-color: #0f0f0f98;
-  }
-  button:active {
-    background-color: #0f0f0f69;
   }
 }
 
